@@ -30,7 +30,7 @@ csv.parse(fs.readFileSync(LIST_FILE), function(err, tags) {
 				containsCandidateNameAsNumber = containsAsNumber(listName, list[4]);
 
 			list.push(containsCandidateNameAsNumber);
-			list.concat(count);
+			list = list.concat(count);
 
 			result.push(list);
 		});
