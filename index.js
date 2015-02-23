@@ -18,7 +18,7 @@ csv.parse(fs.readFileSync(LIST_FILE), function(err, tags) {
 
 		var result = [];
 
-		result.push(lists[0].concat(tags.map(function(tag) { return tag[0] })));
+		result.push(lists.shift().concat(tags.map(function(tag) { return tag[0] })));
 
 		lists.forEach(function(list) {
 			var count = countTags(list[1], tags);
