@@ -1,6 +1,8 @@
 !
 Action
 Alliance
+Anticapitaliste
+Centre
 Changement
 Changer
 Conduite
@@ -11,6 +13,7 @@ Droite
 Ecologie
 Ecologiste
 Ensemble
+Europe
 Force
 Forte
 France
@@ -20,13 +23,20 @@ Independant
 Juste
 Lutte
 Moderne
+National
 Nouveau
 Oser
 Osons
+Ouvriere
+PC
 Progres
+PS
 Rassemblement
 Rassembler
+Solidaire
 Soutenue
 Tete
 Tous
+UMP
 Union
+Extreme
