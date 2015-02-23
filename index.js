@@ -40,9 +40,15 @@ function countTags(listName, tags) {
 
 	tags.forEach(function(tagGroup) {
 		tagGroup.forEach(function(tag) {
-			result.push(+ !! ~ listName.indexOf(tag.toUpperCase()));
+			result.push(containsAsNumber(tag.toUpperCase(), listName));
 		});
 	});
 
 	return result;
+}
+
+/** Returns 1 if hay contains needle, 0 otherwise.
+*/
+function containsAsNumber(needle, hay) {
+	return + !! ~ hay.indexOf(needle);
 }
