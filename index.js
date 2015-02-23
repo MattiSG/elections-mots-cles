@@ -24,6 +24,8 @@ csv.parse(fs.readFileSync(LIST_FILE), function(err, tags) {
 
 		result.push(header);
 
+		var counter = {};
+
 		lists.forEach(function(list) {
 			var listName = list[1],
 				count = countTags(listName, tags),
@@ -33,7 +35,13 @@ csv.parse(fs.readFileSync(LIST_FILE), function(err, tags) {
 			list = list.concat(count);
 
 			result.push(list);
+
+			listName.split(/\b/).forEach(function(term) {
+				counter[term] = counter[term] ? counter[term] + 1 : 1;
+			});
 		});
+
+		// console.log(counter);
 
 		csv.stringify(result, function(err, output) {
 			if (err)
