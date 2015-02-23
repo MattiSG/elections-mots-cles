@@ -5,19 +5,32 @@ var INPUT_FILE = 'listes2010t1.csv',
 
 var fs = require('fs');
 
-var parse = require('csv').parse;
+var csv = require('csv');
 
 
-parse(fs.readFileSync(LIST_FILE), function(err, tags) {
+csv.parse(fs.readFileSync(LIST_FILE), function(err, tags) {
 	if (err)
 		throw err;
 
-	parse(fs.readFileSync(INPUT_FILE), function(err, lists) {
+	csv.parse(fs.readFileSync(INPUT_FILE), function(err, lists) {
 		if (err)
 			throw err;
 
+		var result = [];
+
+		result.push(lists[0].concat(tags.map(function(tag) { return tag[0] })));
+
 		lists.forEach(function(list) {
-			console.log(countTags(list[1], tags));
+			var count = countTags(list[1], tags);
+
+			result.push(list.concat(count));
+		});
+
+		csv.stringify(result, function(err, output) {
+			if (err)
+				throw err;
+
+			console.log(output);
 		});
 	});
 });
@@ -27,7 +40,7 @@ function countTags(listName, tags) {
 
 	tags.forEach(function(tagGroup) {
 		tagGroup.forEach(function(tag) {
-			result[tag] = + !! ~ listName.indexOf(tag.toUpperCase());
+			result.push(+ !! ~ listName.indexOf(tag.toUpperCase()));
 		});
 	});
 
