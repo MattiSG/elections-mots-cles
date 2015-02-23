@@ -56,9 +56,13 @@ function countTags(listName, tags) {
 	var result = [];
 
 	tags.forEach(function(tagGroup) {
+		var contains = 0;
+
 		tagGroup.forEach(function(tag) {
-			result.push(containsAsNumber(tag.toUpperCase(), listName));
+			contains = contains || containsAsNumber(tag.toUpperCase(), listName);
 		});
+
+		result.push(contains);
 	});
 
 	return result;
