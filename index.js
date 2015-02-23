@@ -20,7 +20,7 @@ csv.parse(fs.readFileSync(LIST_FILE), function(err, tags) {
 
 		var header = lists.shift();
 		header.push('contient_nom_candidat');
-		header.concat(tags.map(function(tag) { return tag[0] }));
+		header = header.concat(tags.map(function(tag) { return tag[0] }));
 
 		result.push(header);
 
