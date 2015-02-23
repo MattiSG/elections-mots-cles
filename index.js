@@ -18,12 +18,21 @@ csv.parse(fs.readFileSync(LIST_FILE), function(err, tags) {
 
 		var result = [];
 
-		result.push(lists.shift().concat(tags.map(function(tag) { return tag[0] })));
+		var header = lists.shift();
+		header.push('contient_nom_candidat');
+		header.concat(tags.map(function(tag) { return tag[0] }));
+
+		result.push(header);
 
 		lists.forEach(function(list) {
-			var count = countTags(list[1], tags);
+			var listName = list[1],
+				count = countTags(listName, tags),
+				containsCandidateNameAsNumber = containsAsNumber(listName, list[4]);
 
-			result.push(list.concat(count));
+			list.push(containsCandidateNameAsNumber);
+			list.concat(count);
+
+			result.push(list);
 		});
 
 		csv.stringify(result, function(err, output) {
