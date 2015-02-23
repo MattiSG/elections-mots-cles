@@ -29,7 +29,7 @@ csv.parse(fs.readFileSync(LIST_FILE), function(err, tags) {
 		lists.forEach(function(list) {
 			var listName = list[1],
 				count = countTags(listName, tags),
-				containsCandidateNameAsNumber = containsAsNumber(listName, list[4]);
+				containsCandidateNameAsNumber = containsAsNumber(list[4], listName);
 
 			list.push(containsCandidateNameAsNumber);
 			list = list.concat(count);
