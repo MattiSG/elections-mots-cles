@@ -28,7 +28,7 @@ Progres
 PS
 Rassemblement,Rassembler,Rassemblee
 Solidaire
-Soutenue
+Soutenu,Soutenue
 Tete
 Tous
 UMP
